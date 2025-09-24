@@ -38,22 +38,34 @@ public class Article {
     }
 
 
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
+    public Long getId() {
+        return id; }
+    public void setId(Long id) {
+        this.id = id; }
 
-    public String getTitre() { return titre; }
-    public void setTitre(String titre) { this.titre = titre; }
+    public String getTitre() {
+        return titre; }
+    public void setTitre(String titre) {
+        this.titre = titre; }
 
-    public String getContenu() { return contenu; }
-    public void setContenu(String contenu) { this.contenu = contenu; }
+    public String getContenu() {
+        return contenu; }
+    public void setContenu(String contenu) {
+        this.contenu = contenu; }
 
-    public Categorie getCategorie() { return categorie; }
-    public void setCategorie(Categorie categorie) { this.categorie = categorie; }
+    public Categorie getCategorie() {
+        return categorie; }
+    public void setCategorie(Categorie categorie) {
+        this.categorie = categorie; }
 
-    public String getImageUrl() { return imageUrl; }
-    public void setImageUrl(String imageUrl) { this.imageUrl = imageUrl; }
+    public String getImageUrl() {
+        return imageUrl; }
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl; }
 
-    public User getAuteur() { return auteur; }
-    public void setAuteur(User auteur) { this.auteur = auteur; }
+    public User getAuteur() {
+        return auteur; }
+    public void setAuteur(User auteur) {
+        this.auteur = auteur; }
 }
 
