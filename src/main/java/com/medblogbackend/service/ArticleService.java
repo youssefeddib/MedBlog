@@ -34,4 +34,13 @@ public class ArticleService {
         return articleRepository.findById(id)
                 .orElseThrow(()-> new RuntimeException("Article non trové"));
     }
+
+    public Article updateArticle(Long id, Article updatedArticle) {
+        Article artticle = getArticleById(id);
+        artticle.setTitre(updatedArticle.getTitre());
+        artticle.setContenu(updatedArticle.getContenu());
+        artticle.setCategorie(updatedArticle.getCategorie());
+        artticle.setImageUrl(updatedArticle.getImageUrl());
+        return articleRepository.save(artticle);
+    }
 }
