@@ -1,6 +1,7 @@
 package com.medblogbackend.service;
 
 import com.medblogbackend.entity.Article;
+import com.medblogbackend.entity.Categorie;
 import com.medblogbackend.entity.User;
 import com.medblogbackend.repository.ArticleRepository;
 import com.medblogbackend.repository.UserRepository;
@@ -43,4 +44,14 @@ public class ArticleService {
         artticle.setImageUrl(updatedArticle.getImageUrl());
         return articleRepository.save(artticle);
     }
+
+    public  void deleteArticle(Long id) {
+        articleRepository.deleteById(id);
+    }
+
+    public List<Article> getArticlesByCategorie(Categorie categorie){
+        return articleRepository.findByCategorie(categorie);
+    }
+
+
 }

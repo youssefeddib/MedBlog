@@ -2,6 +2,7 @@ package com.medblogbackend.controller;
 
 
 import com.medblogbackend.entity.Article;
+import com.medblogbackend.entity.Categorie;
 import com.medblogbackend.service.ArticleService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -41,4 +42,19 @@ public class ArticleController {
         return ResponseEntity.ok(articleService.updateArticle(id, article));
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteArticle(@PathVariable Long id){
+        articleService.deleteArticle(id);
+        return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/categorie/{categorie}")
+    public ResponseEntity<List<Article>> getArticlesByCategorie(@PathVariable Categorie categorie){
+        return ResponseEntity.ok(articleService.getArticlesByCategorie(categorie));
+    }
+
+    @GetMapping("auteur/{user Id")
+    public ResponseEntity<List<Article>> getArticlesByUser(@PathVariable Long userId) {
+        return  ResponseEntity.ok(articlesService.getArticleByUser(userId))
+    }
 }
