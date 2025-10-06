@@ -2,56 +2,27 @@ package com.medblogbackend.service;
 
 import com.medblogbackend.entity.Article;
 import com.medblogbackend.entity.Categorie;
-import com.medblogbackend.entity.User;
-import com.medblogbackend.repository.ArticleRepository;
-import com.medblogbackend.repository.UserRepository;
-import org.springframework.stereotype.Service;
+
 
 import java.util.List;
 
-@Service
-public class ArticleService {
 
-    private final ArticleRepository articleRepository;
-    private final UserRepository userRepository;
+public interface ArticleService {
 
-    public ArticleService(ArticleRepository articleRepository, UserRepository userRepository) {
-        this.articleRepository = articleRepository;
-        this.userRepository = userRepository;
-    }
+   Article createArticle(Article article, Long userId);
 
-    public Article createArticle (Article article, Long userId) {
-        User user = userRepository.findById(userId)
-        .orElseThrow(() -> new RuntimeException("Utilisateur non trouvé"));
-        article.setAuteur(user);
-        return articleRepository.save(article);
-    }
+   List<Article> getAllArticles();
 
-    public List<Article> getAllArticles() {
-        return articleRepository.findAll();
-    }
+   Article getArticleById(Long id);
 
-    public Article getArticleById(Long id) {
-        return articleRepository.findById(id)
-                .orElseThrow(()-> new RuntimeException("Article non trové"));
-    }
+   Article updateArticle(Long id, Article article);
 
-    public Article updateArticle(Long id, Article updatedArticle) {
-        Article artticle = getArticleById(id);
-        artticle.setTitre(updatedArticle.getTitre());
-        artticle.setContenu(updatedArticle.getContenu());
-        artticle.setCategorie(updatedArticle.getCategorie());
-        artticle.setImageUrl(updatedArticle.getImageUrl());
-        return articleRepository.save(artticle);
-    }
+   void deleteArticle(Long id);
 
-    public  void deleteArticle(Long id) {
-        articleRepository.deleteById(id);
-    }
+   List<Article> getArticlesByCategorie(Categorie categorie);
 
-    public List<Article> getArticlesByCategorie(Categorie categorie){
-        return articleRepository.findByCategorie(categorie);
-    }
+   List<Article> getArticlesByUser(Long userId);
 
+   List<Article> serchArticles(String titre, Categorie categorie);
 
 }

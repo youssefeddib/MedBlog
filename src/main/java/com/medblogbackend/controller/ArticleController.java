@@ -5,10 +5,10 @@ import com.medblogbackend.entity.Article;
 import com.medblogbackend.entity.Categorie;
 import com.medblogbackend.service.ArticleService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
+
 import org.springframework.web.bind.annotation.*;
 
-import javax.swing.text.html.parser.Entity;
+
 import java.util.List;
 
 @RestController
@@ -16,7 +16,7 @@ import java.util.List;
 @CrossOrigin(origins = "*")
 public class ArticleController {
 
-    private ArticleService articleService;
+    private final ArticleService articleService;
     public ArticleController(ArticleService articleService) {
         this.articleService = articleService;
     }
@@ -53,8 +53,60 @@ public class ArticleController {
         return ResponseEntity.ok(articleService.getArticlesByCategorie(categorie));
     }
 
-    @GetMapping("auteur/{user Id")
+    @GetMapping("/auteur/{userId}")
     public ResponseEntity<List<Article>> getArticlesByUser(@PathVariable Long userId) {
-        return  ResponseEntity.ok(articlesService.getArticleByUser(userId))
+        return  ResponseEntity.ok(articleService.getArticlesByUser(userId));
     }
+
+    @GetMapping("/search")
+    public List<Article> serchArticles(
+            @RequestParam(required = false) String titre,
+            @RequestParam(required = false) Categorie categorie
+    ){
+        return articleService.serchArticles(titre, categorie);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

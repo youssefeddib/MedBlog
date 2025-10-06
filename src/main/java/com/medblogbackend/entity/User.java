@@ -1,13 +1,12 @@
 package com.medblogbackend.entity;
 
-
 import jakarta.persistence.*;
 import java.util.List;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "users")
 public class User {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -28,6 +27,7 @@ public class User {
     private String telephone;
 
     @OneToMany(mappedBy = "auteur", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<Article> articles;
 
     public User() {}
@@ -40,38 +40,61 @@ public class User {
         this.telephone = telephone;
     }
 
+
     public Long getId() {
-        return id; }
+        return id;
+    }
+
     public void setId(Long id) {
-        this.id = id; }
+        this.id = id;
+    }
 
     public String getNom() {
-        return nom; }
+        return nom;
+    }
+
     public void setNom(String nom) {
-        this.nom = nom; }
+        this.nom = nom;
+    }
 
     public String getPrenom() {
-        return prenom; }
+        return prenom;
+    }
+
     public void setPrenom(String prenom) {
-        this.prenom = prenom; }
+        this.prenom = prenom;
+    }
 
     public String getEmail() {
-        return email; }
+        return email;
+    }
+
     public void setEmail(String email) {
-        this.email = email; }
+        this.email = email;
+    }
 
     public String getPassword() {
-        return password; }
+        return password;
+    }
+
     public void setPassword(String password) {
-        this.password = password; }
+        this.password = password;
+    }
 
     public String getTelephone() {
-        return telephone; }
-    public void setTelephone(String telephone) {
-        this.telephone = telephone; }
+        return telephone;
+    }
 
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
+    }
+
+    @JsonIgnore
     public List<Article> getArticles() {
-        return articles; }
+        return articles;
+    }
+
     public void setArticles(List<Article> articles) {
-        this.articles = articles; }
+        this.articles = articles;
+    }
 }
