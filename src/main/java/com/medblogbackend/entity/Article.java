@@ -1,12 +1,13 @@
 package com.medblogbackend.entity;
 
-
 import jakarta.persistence.*;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 @Table(name = "articles")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Article {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -39,33 +40,50 @@ public class Article {
 
 
     public Long getId() {
-        return id; }
+        return id;
+    }
+
     public void setId(Long id) {
-        this.id = id; }
+        this.id = id;
+    }
 
     public String getTitre() {
-        return titre; }
+        return titre;
+    }
+
     public void setTitre(String titre) {
-        this.titre = titre; }
+        this.titre = titre;
+    }
 
     public String getContenu() {
-        return contenu; }
+        return contenu;
+    }
+
     public void setContenu(String contenu) {
-        this.contenu = contenu; }
+        this.contenu = contenu;
+    }
 
     public Categorie getCategorie() {
-        return categorie; }
+        return categorie;
+    }
+
     public void setCategorie(Categorie categorie) {
-        this.categorie = categorie; }
+        this.categorie = categorie;
+    }
 
     public String getImageUrl() {
-        return imageUrl; }
+        return imageUrl;
+    }
+
     public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl; }
+        this.imageUrl = imageUrl;
+    }
 
     public User getAuteur() {
-        return auteur; }
-    public void setAuteur(User auteur) {
-        this.auteur = auteur; }
-}
+        return auteur;
+    }
 
+    public void setAuteur(User auteur) {
+        this.auteur = auteur;
+    }
+}
