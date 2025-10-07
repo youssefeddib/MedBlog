@@ -26,7 +26,7 @@ public class User {
     @Column(nullable = false)
     private String telephone;
 
-    @OneToMany(mappedBy = "auteur", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "auteur", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonIgnore
     private List<Article> articles;
 
