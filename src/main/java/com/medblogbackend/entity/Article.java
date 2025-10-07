@@ -22,6 +22,7 @@ public class Article {
     @Column(nullable = false)
     private Categorie categorie;
 
+    @Column(name = "image_url")
     private String imageUrl;
 
     @ManyToOne
